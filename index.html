@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="af">
+<head>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🌞 Buffelspoort Kuier 2025!</title>
+  
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      background: linear-gradient(to bottom right, #4facfe, #fbc531);
+      overflow-x: hidden;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 30px 15px;
+      min-height: 100vh;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .details, .gallery, .map, .rsvp {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      border-radius: 15px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    .rsvp button, .whatsapp-button {
+      background-color: #ff9800;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      display: block;
+      margin: 15px auto;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .rsvp button:hover, .whatsapp-button:hover {
+      background-color: #e68900;
+      transform: scale(1.05);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 15px;
+    }
+
+    audio {
+      display: block;
+      margin: 15px auto;
+      width: 95%;
+      max-width: 400px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.5);
+      margin-top: 30px;
+      font-size: 14px;
+    }
+
+    .dropdown {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .dropdown select {
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    /* Secret hidden message */
+    .secret {
+      color: transparent;
+      font-size: 1px;
+      user-select: none;
+    }
+
+    /* Countdown text */
+    .countdown {
+      font-size: 18px;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    /* Emoji jump animation */
+    @keyframes jump {
+      0% { transform: translateY(0); }
+      30% { transform: translateY(-15px); }
+      50% { transform: translateY(0); }
+      70% { transform: translateY(-7px); }
+      100% { transform: translateY(0); }
+    }
+
+    .emoji-jump {
+      display: inline-block;
+      animation: jump 0.6s ease;
+    }
+
+    /* Mobile adjustments */
+    @media screen and (max-width: 480px) {
+      .details p, .rsvp p, .map p {
+        font-size: 16px;
+      }
+      .rsvp button, .whatsapp-button {
+        font-size: 16px;
+        padding: 12px 20px;
+      }
+      iframe {
+        height: 250px;
+      }
+      .gallery-grid img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="overlay">
+    <div class="dropdown">
+      <label for="nameSelect" style="font-size: 16px;">👤 Kies jou naam: </label>
+      <select id="nameSelect" onchange="personalize()">
+        <option value="">-- Kies jou naam --</option>
+        <option value="Tihard">Tihard</option>
+        <option value="Zandré">Zandré</option>
+        <option value="Christiaan">Christiaan</option>
+        <option value="Jaydin">Jaydin</option>
+        <option value="De Wet">De Wet</option>
+		 <option value="Joubert">Joubert</option>
+      </select>
+    </div>
+
+    <h1 id="mainHeading" align="center">🌴 Buffelspoort Kuier 2025 🌊</h1>
+
+    <!-- Countdown afdeling -->
+    <div class="countdown" id="countdown"></div>
+
+    <!-- Musiekspeler -->
+    <audio id="bgmusic" autoplay loop controls>
+      <source src="Rondomtalie.mp3" type="audio/mpeg">
+    </audio>
+
+   <div class="details">
+  <p>Jy’s uitgenooi na my <em>Buffelspoort-kuier!</em> 🎉 Dit gaan plaasvind van <strong>25–27 November 2025</strong> – perfek net ná die eksamens en reg voor die vakansie se hoogtepunte. Dis daardie tyd van die jaar vir swem, braai en net lekker kuier saam met die beste mense! 🌞</p>
+  
+  <p>Die venue is <strong>ATKV Buffelspoort</strong> – waar water, son en baie lag op jou wag! Bring jou sonbril, jou beste vibes en natuurlik jou groot dors vir ’n kuier soos min. 😎🍹</p>
+  
+  <p>Die plek is reeds <strong>bespreek</strong> en alles is gereël! Ek weet dis ’n besige tyd van die jaar, maar ek het vroeg bespreek sodat ons net kan ontspan en saam memories maak. As daar iets opkom en jy kan ongelukkig nie meer saamgaan nie, laat weet my asseblief betyds – maar jy weet mos, niemand kan jou plek regtig vul nie. ❤️</p>
+<p align="center"><b>*Let wel:</b> Vervoer tot by Buffelspoort is jou eie verantwoordelikheid.</p>
+</div>
+
+
+    <div class="map">
+      <h2>📍</h2>
+      <iframe src="https://www.google.com/maps?q=ATKV+Buffelspoort&hl=af&z=14&output=embed"></iframe>
+      <p><a href="https://maps.app.goo.gl/m8yWTY6qxD5J6nLf7" target="_blank" style="color: #ffa;">📌 Klik hier vir Google Maps rigting</a></p>
+    </div>
+
+    <div class="rsvp">
+      <h2 style="text-align: center;">✅ RSVP Hier</h2>
+<p style="text-align: center;">Laat weet my asb of jy kom deur die vorm in te vul hieronder:</p>
+<p style="text-align: center;"><b>Let wel:</b> Jou plek is eers verseker as jy R800 betaal het en ek jou bewys van betaling ontvang het!</p>
+
+<div style="text-align: center; margin-top: 15px;">
+    <div>Rekeningnaam: Tihard Strydom</div>
+    <div>Banknaam: Absa Bank</div>
+    <div>Rekeningnommer: 93 9418 2549</div>
+    <div>Takkode: 632005</div>
+    <div>Rekeningtipe: Trusave</div>
+    <div>Verwysing: Naam+Buf</div>
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdsIoBBvTnZY62KrrJCKcuDC-F5qPoM32tLTU-t-aARZHTgqQ/viewform?usp=header" target="_blank">
+        <button>RSVP Nou 🎉</button>
+    </a>
+</div>
+      </a>
+      <p style="text-align:center; margin-top:15px;">As jy onseker is of nog iets wil weet, kan jy my sommer direk WhatsApp:</p>
+      <a class="whatsapp-button" href="https://wa.me/27608935144" target="_blank">Kontak Tihard op WhatsApp 📱</a>
+    </div>
+
+    <div class="gallery">
+      <h2>☀️ Summer Vibes Preview</h2>
+      <div class="gallery-grid">
+        <img src="buffelspoort1.jpg" alt="Swenbaddens">
+		 <img src="Boiis.jpg" alt="Boys">
+        <img src="Love.jpg" alt="Die manne">
+        <img src="buffelspoort2.jpg" alt="Jacuzzi">
+        <img src="poolparty.jpg" alt="Braai">
+        <img src="sunsetlake.jpg" alt="Verblyf">
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy;2025 Tihard Strydom😁 | Buffelspoort Kuier🌴</p>
+    </footer>
+  </div>
+
+  <div class="secret">Bring baie drank want ons gaan baie drink 🍻</div>
+
+  <script>
+    const music = document.getElementById("bgmusic");
+    music.volume = 0.6;
+
+    function personalize() {
+      const name = document.getElementById("nameSelect").value;
+      const heading = document.getElementById("mainHeading");
+
+      let message = "";
+      let joke = "";
+      let emoji = "🌞";
+
+      switch (name) {
+        case "Tihard":
+          message = `Tihard, jy’s uitgenooi Buffelspoort toe! 🌊`;
+          joke = "Jy’s seker weer die een wat alles reël en die res net laat kuier! 🧊😂";
+          break;
+        case "Zandré":
+          message = `Zandré, Buffelspoort wag vir jou! 🌊`;
+          joke = "Jy’t mos nou ’n surprise party oorleef – dis tyd om Buffelspoort te oorleef! 🍻😅";
+          break;
+        case "Christiaan":
+          message = `Christiaan, Buffelspoort is reg vir jou! 🌊`;
+          joke = "Jy help reel, maar jy ken mos al my kuier-geheime! 😉";
+          break;
+        case "Jaydin":
+          message = `Jaydin, jy mag nie Buffelspoort mis nie! 🌊`;
+          joke = "Ons weet jy’s klein en hiper – perfek om almal aan die gang te hou! ⚡😂";
+          break;
+        case "De Wet":
+          message = `De Wet, jou bed wag by Buffelspoort! 🌊`;
+          joke = "Daar’s dalk nie ’n rugbyveld nie, maar jy kan ’n paar doppe tackle! 🏉🤣";
+          break;
+		 case "Joubert":
+          message = `Joubert, jy’s uitgenooi Buffelspoort toe! 🌊 🌊`;
+          joke = "Joubert, Jy bring altyd daai vibes saam - hoop jy's reg vir n groot kuier! 🍻😅";
+          break; 
+        default:
+          message = `Buffelspoort Kuier 2025 🌊`;
+          joke = "";
+      }
+
+      // Emoji jump
+      heading.innerHTML = `${emoji} <span class="emoji-jump">${message}</span><br><small style="font-size:16px;color:#ffa;">${joke}</small>`;
+    }
+
+    // Countdown funksie
+    const countdownDate = new Date("2025-11-25T10:00:00").getTime();
+    const countdownElement = document.getElementById("countdown");
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (distance < 0) {
+        countdownElement.innerHTML = "🎉 Dis nou tyd vir Buffelspoort vibes! 🏖️";
+      } else {
+        countdownElement.innerHTML = `⏳ Nog ${days} dae, ${hours} ure, ${minutes} minute en ${seconds} sekondes tot Buffelspoort! 🌞`;
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
